@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,6 +49,13 @@ public class AdminControlador {
 		return new ModelAndView("admin/nueva-pelicula")
 				.addObject("pelicula", new Pelicula())
 				.addObject("generos",generos);
+	}
+	
+	@GetMapping("/generos/nuevo")
+	public String fGeneroNuevo(@Validated Genero genero, Model model) {
+		Genero ngenero = new Genero();
+		model.addAttribute("ngenero", ngenero);
+		return "admin/nuevo-genero";
 	}
 	
 	@PostMapping("/peliculas/nuevo")
