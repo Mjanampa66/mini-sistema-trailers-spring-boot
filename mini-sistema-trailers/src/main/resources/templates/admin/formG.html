@@ -9,11 +9,11 @@
 
 	<div layout:fragment="form">
 		<br>
-		<form action="/generos/guardar" method="post" th:object="${ngenero}"
-			enctype="multipart/form-data">
+		<form th:action="@{/admin/generos/nuevo}" method="post" th:object="${ngenero}">
+			
 			<div class="mb-3">
-				<label for="titulo" class="form-label">Genero : </label> <input
-					type="text" id="titulo" placeholder="Digite el genero"
+				<label for="titulo" class="form-label">Genero : </label> 
+				<input type="text" id="titulo" placeholder="Digite el genero"
 					class="form-control" th:field="*{titulo}">
 				<div class="invalid-feedback" th:if="${#fields.hasErrors('titulo')}"
 					th:errors="*{titulo}"></div>
