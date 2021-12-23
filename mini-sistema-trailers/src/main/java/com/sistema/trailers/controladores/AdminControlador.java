@@ -51,11 +51,18 @@ public class AdminControlador {
 				.addObject("generos",generos);
 	}
 	
+		
 	@GetMapping("/generos/nuevo")
 	public String fGeneroNuevo(@Validated Genero genero, Model model) {
 		Genero ngenero = new Genero();
 		model.addAttribute("ngenero", ngenero);
 		return "admin/nuevo-genero";
+	}
+	
+	@PostMapping("/generos/nuevo")
+	public String guardarGenero(@Validated Genero genero) {
+		generoRepositorio.save(genero);
+		return "redirect:/admin";
 	}
 	
 	@PostMapping("/peliculas/nuevo")
